@@ -518,10 +518,10 @@ function set_deployment_settings() {
         else
             LOCATION=${LOCATION:-remote}
             PLATFORM=${PLATFORM:-libvirt}
-            PLATFORM_DISTRO=rancher-k3os # centos | ubuntu | mos
+            PLATFORM_DISTRO=rancher-harvester # centos | ubuntu | mos | rancher-k3os | rancher-harvester
             RUNTIME=${RUNTIME:-daemon}
             SSH_USER=rancher                    # centos | ubuntu | mos
-            SSH_GROUP=${SSH_GROUP:-remotes_env} # remotes | remotes_env | remotes_mos
+            SSH_GROUP=${SSH_GROUP:-remotes_rancher} # remotes | remotes_env | remotes_mos | remotes_rancher
             SSH_USER_PASSWORD=                  # linux
             SSH_USER_PEM=
         fi
@@ -611,20 +611,20 @@ function clean_runtime() {
         sudo find ${ETC}/libvirt -name sles* -exec rm -rf {} \;
         sudo find ${ETC}/libvirt -name ubuntu* -exec rm -rf {} \;
         sudo find ${ETC}/libvirt -name leap15* -exec rm -rf {} \;
-        sudo rm -rf ${ETC}/libvirt/qemu/{mos,alpine,centos,debian,fedora,opensuse-leap,opensuse-tumbleweed,rancher-k3os,rancher-os,raspios,sles,ubuntu,leap15}-*.xml
-        sudo rm -rf ${ETC}/libvirt/qemu/networks/{mos,alpine,centos,debian,fedora,opensuse-leap,opensuse-tumbleweed,rancher-k3os,rancher-os,raspios,sles,ubuntu,leap15}.xml
-        sudo rm -rf ${ETC}/libvirt/qemu/networks/{mos,alpine,centos,debian,fedora,opensuse-leap,opensuse-tumbleweed,rancher-k3os,rancher-os,raspios,sles,ubuntu,leap15}-network.xml
-        sudo rm -rf ${ETC}/libvirt/qemu/networks/autostart/{mos,alpine,centos,debian,fedora,opensuse-leap,opensuse-tumbleweed,rancher-k3os,rancher-os,raspios,sles,ubuntu,leap15}.xml
-        sudo rm -rf ${ETC}/libvirt/qemu/networks/autostart/{mos,alpine,centos,debian,fedora,opensuse-leap,opensuse-tumbleweed,rancher-k3os,rancher-os,raspios,sles,ubuntu,leap15}-network.xml
-        sudo rm -rf ${ETC}/libvirt/storage/{mos,alpine,centos,debian,fedora,opensuse-leap,opensuse-tumbleweed,rancher-k3os,rancher-os,raspios,sles,ubuntu,leap15}.xml
-        sudo rm -rf ${ETC}/libvirt/storage/autostart/{mos,alpine,centos,debian,fedora,opensuse-leap,opensuse-tumbleweed,rancher-k3os,rancher-os,raspios,sles,ubuntu,leap15}.xml
+        sudo rm -rf ${ETC}/libvirt/qemu/{mos,alpine,centos,debian,fedora,opensuse-leap,opensuse-tumbleweed,rancher-harvester,rancher-k3os,rancher-os,raspios,sles,ubuntu,leap15}-*.xml
+        sudo rm -rf ${ETC}/libvirt/qemu/networks/{mos,alpine,centos,debian,fedora,opensuse-leap,opensuse-tumbleweed,rancher-harvester,rancher-k3os,rancher-os,raspios,sles,ubuntu,leap15}.xml
+        sudo rm -rf ${ETC}/libvirt/qemu/networks/{mos,alpine,centos,debian,fedora,opensuse-leap,opensuse-tumbleweed,rancher-harvester,rancher-k3os,rancher-os,raspios,sles,ubuntu,leap15}-network.xml
+        sudo rm -rf ${ETC}/libvirt/qemu/networks/autostart/{mos,alpine,centos,debian,fedora,opensuse-leap,opensuse-tumbleweed,rancher-harvester,rancher-k3os,rancher-os,raspios,sles,ubuntu,leap15}.xml
+        sudo rm -rf ${ETC}/libvirt/qemu/networks/autostart/{mos,alpine,centos,debian,fedora,opensuse-leap,opensuse-tumbleweed,rancher-harvester,rancher-k3os,rancher-os,raspios,sles,ubuntu,leap15}-network.xml
+        sudo rm -rf ${ETC}/libvirt/storage/{mos,alpine,centos,debian,fedora,opensuse-leap,opensuse-tumbleweed,rancher-harvester,rancher-k3os,rancher-os,raspios,sles,ubuntu,leap15}.xml
+        sudo rm -rf ${ETC}/libvirt/storage/autostart/{mos,alpine,centos,debian,fedora,opensuse-leap,opensuse-tumbleweed,rancher-harvester,rancher-k3os,rancher-os,raspios,sles,ubuntu,leap15}.xml
         STACK_NAME=my-cluster
         sudo rm -rf ${HOME}/.config/libvirt/qemu/networks/${STACK_NAME}-network.xml
 
         sudo rm -rf ${HOME}/Documents/myImages/libvirt/images
         sudo mkdir -p ${HOME}/Documents/myImages/libvirt/images
         sudo ls -alh ${HOME}/Documents/myImages/libvirt/images
-        sudo rm -rf /var/lib/libvirt/dnsmasq/{mos,alpine,centos,debian,fedora,opensuse-leap,opensuse-tumbleweed,rancher-k3os,rancher-os,raspios,sles,ubuntu,leap15}-network.*
+        sudo rm -rf /var/lib/libvirt/dnsmasq/{mos,alpine,centos,debian,fedora,opensuse-leap,opensuse-tumbleweed,rancher-harvester,rancher-k3os,rancher-os,raspios,sles,ubuntu,leap15}-network.*
         sudo rm -rf /var/lib/libvirt/qemu/domain-*
         # VM_IMAGE_DIR=/var/lib/libvirt/images
         # ALT_VM_IMAGE_DIR=${HOME}/Documents/myImages/libvirt/images
@@ -675,6 +675,8 @@ function list_local_images() {
         ls -alh ${HOME}/Documents/myImages/kvm/opensuse-leap/ || true
         echo -e "\n>>> kvm/opensuse tumbleweed...\n"
         ls -alh ${HOME}/Documents/myImages/kvm/opensuse-tumbleweed/ || true
+        echo -e "\n>>> kvm/rancher harvester...\n"
+        ls -alh ${HOME}/Documents/myImages/kvm/rancher-harvester/ || true
         echo -e "\n>>> kvm/rancher k3os...\n"
         ls -alh ${HOME}/Documents/myImages/kvm/rancher-k3os/ || true
         echo -e "\n>>> kvm/rancher os...\n"

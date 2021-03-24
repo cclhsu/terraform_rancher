@@ -19,7 +19,7 @@ libvirt_keyfile = ""
 # # # Pool to be used to store all the volumes
 # pool = "pool"
 
-k3os_version = "v0.11.1"
+harvester_version = "v0.1.0"
 
 # URL of the image to use
 # EXAMPLE:
@@ -45,37 +45,37 @@ lb_image_uri = "${HOME}/Documents/myImages/kvm/rancher-k3os/k3os-amd64.qcow2"
 
 # URL of the image to use
 # EXAMPLE:
-# image_uri = "k3os-amd64.qcow2"
-# image_uri = "https://github.com/rancher/k3os/releases/download/v0.11.1/k3os-amd64.img"
-image_uri = "${HOME}/Documents/myImages/kvm/rancher-k3os/k3os-amd64.qcow2"
+# image_uri = "harvester-amd64.qcow2"
+# image_uri = "https://github.com/rancher/harvester/releases/download/v0.1.0/harvester-amd64.img"
+image_uri = "${HOME}/Documents/myImages/kvm/rancher-harvester/harvester-amd64.qcow2"
 
 # URL of the kernel to use
 # EXAMPLE:
-# kernel_uri = "k3os-vmlinuz-amd64"
-# kernel_uri = "https://github.com/rancher/k3os/releases/download/v0.11.1/k3os-vmlinuz-amd64"
-kernel_uri = "${HOME}/Documents/myImages/iso/rancher-k3os/v0.11.1/amd64/k3os-vmlinuz-amd64"
+# kernel_uri = "harvester-vmlinuz-amd64"
+# kernel_uri = "https://github.com/rancher/harvester/releases/download/v0.1.0/harvester-vmlinuz-amd64"
+kernel_uri = "${HOME}/Documents/myImages/iso/rancher-harvester/v0.1.0/amd64/harvester-vmlinuz-amd64"
 
 # URL of the initrd to use
 # EXAMPLE:
-# initrd_uri = "k3os-initrd-amd64"
-# initrd_uri = "https://github.com/rancher/k3os/releases/download/v0.11.1/k3os-initrd-amd64"
-initrd_uri = "${HOME}/Documents/myImages/iso/rancher-k3os/v0.11.1/amd64/k3os-initrd-amd64"
+# initrd_uri = "harvester-initrd-amd64"
+# initrd_uri = "https://github.com/rancher/harvester/releases/download/v0.1.0/harvester-initrd-amd64"
+initrd_uri = "${HOME}/Documents/myImages/iso/rancher-harvester/v0.1.0/amd64/harvester-initrd-amd64"
 
 # URL of the squashfs to use
 # EXAMPLE:
-# squashfs_uri = "k3os-kernel-amd64.squashfs"
-# squashfs_uri = "https://github.com/rancher/k3os/releases/download/v0.11.1/k3os-kernel-amd64.squashfs"
-squashfs_uri = "${HOME}/Documents/myImages/iso/rancher-k3os/v0.11.1/amd64/k3os-kernel-amd64.squashfs"
+# squashfs_uri = "harvester-kernel-amd64.squashfs"
+# squashfs_uri = "https://github.com/rancher/harvester/releases/download/v0.1.0/harvester-kernel-amd64.squashfs"
+squashfs_uri = "${HOME}/Documents/myImages/iso/rancher-harvester/v0.1.0/amd64/harvester-kernel-amd64.squashfs"
 
 # URL of the iso to use
 # EXAMPLE:
-# iso_uri = "k3os-amd64.iso"
-# iso_uri = "https://github.com/rancher/k3os/releases/download/v0.11.1/k3os-amd64.iso"
-iso_uri = "${HOME}/Documents/myImages/iso/rancher-k3os/v0.11.1/amd64/k3os-amd64.iso"
+# iso_uri = "harvester-amd64.iso"
+# iso_uri = "https://github.com/rancher/harvester/releases/download/v0.1.0/harvester-amd64.iso"
+iso_uri = "${HOME}/Documents/myImages/iso/rancher-harvester/v0.1.0/amd64/harvester-amd64.iso"
 
 # Identifier to make all your resources unique and avoid clashes with other users of this terraform project
-# stack_name = "my-rancher-k3os-cluster"
-stack_name = "rancher-k3os"
+# stack_name = "my-rancher-harvester-cluster"
+stack_name = "rancher-harvester"
 
 # CIDR of the network
 network_cidr = "10.17.0.0/22"
@@ -94,7 +94,7 @@ worker_memory = 5120
 worker_vcpu   = 4
 
 # Name of DNS domain
-dns_domain = "rancher-k3os.local"
+dns_domain = "rancher-harvester.local"
 
 # Username for the cluster nodes
 # EXAMPLE:
